@@ -34,11 +34,15 @@ namespace App
                 DiscontAmountTextBox1.Text = nowDiscont;
                 OnStockTextBox2.Text = onSclad;
                 DescriptionRichTextBox1.Text = resume;
+                category = null;
+
+
 
             }
             if (fileName != null)
             {
                 ImageLabel6.Text = fileName;
+                fileName = null;
             }
         }
 
