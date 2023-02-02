@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.ShowButton3 = new System.Windows.Forms.Button();
-            this.EditButton2 = new System.Windows.Forms.Button();
             this.AddButton1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -45,16 +44,6 @@
             this.ShowButton3.UseVisualStyleBackColor = true;
             this.ShowButton3.Click += new System.EventHandler(this.ShowButton3_Click);
             // 
-            // EditButton2
-            // 
-            this.EditButton2.Location = new System.Drawing.Point(645, 378);
-            this.EditButton2.Name = "EditButton2";
-            this.EditButton2.Size = new System.Drawing.Size(106, 56);
-            this.EditButton2.TabIndex = 6;
-            this.EditButton2.Text = "Редактировать товары";
-            this.EditButton2.UseVisualStyleBackColor = true;
-            this.EditButton2.Click += new System.EventHandler(this.EditButton2_Click);
-            // 
             // AddButton1
             // 
             this.AddButton1.Location = new System.Drawing.Point(645, 317);
@@ -68,10 +57,11 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(50, 17);
+            this.dataGridView1.Location = new System.Drawing.Point(29, 26);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(503, 348);
             this.dataGridView1.TabIndex = 4;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // MainForm2
             // 
@@ -79,11 +69,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.ShowButton3);
-            this.Controls.Add(this.EditButton2);
             this.Controls.Add(this.AddButton1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "MainForm2";
-            this.Text = "MainForm2";
+            this.Text = "Товары";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -92,7 +81,6 @@
         #endregion
 
         private System.Windows.Forms.Button ShowButton3;
-        private System.Windows.Forms.Button EditButton2;
         private System.Windows.Forms.Button AddButton1;
         private System.Windows.Forms.DataGridView dataGridView1;
     }

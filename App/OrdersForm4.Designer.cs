@@ -59,7 +59,7 @@
             this.Controls.Add(this.ExitButton1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "OrdersForm4";
-            this.Text = "OrdersForm4";
+            this.Text = "Заказы";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 

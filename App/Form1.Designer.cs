@@ -100,7 +100,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Enterbutton1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Войти";
             this.ResumeLayout(false);
             this.PerformLayout();
 
