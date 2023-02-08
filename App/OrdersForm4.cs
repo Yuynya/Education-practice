@@ -34,5 +34,11 @@ namespace App
         {
             this.Close();
         }
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            AddOrderForm5 addOrderForm5 = new AddOrderForm5();
+            addOrderForm5.ShowDialog();
+        }
     }
 }

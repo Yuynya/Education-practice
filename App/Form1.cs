@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,6 +14,7 @@ namespace App
 {
     public partial class Form1 : Form
     {
+        Thread th;
         public Form1()
         {
             InitializeComponent();
@@ -31,9 +33,13 @@ namespace App
                 sqlcon.Open();
                 SqlCommand commandAll = new SqlCommand("Select post from Users where login ='" + LoginTextBox1.Text + "' and password ='" + PasswordTextBox2.Text + "'", sqlcon);
                 ClassContext.levelAccesses = Convert.ToInt32(commandAll.ExecuteScalar());
-                //sqlcon.Close();
-                MainForm2 FM = new MainForm2();
-                FM.Show();
+               // sqlcon.Close();
+
+                this.Close();
+                th = new Thread(open);
+                th.SetApartmentState(ApartmentState.STA);
+                th.Start();
+
 
             }
             else
@@ -44,11 +50,17 @@ namespace App
             }
         }
 
+        public void open(object o)
+        {
+            Application.Run(new MainForm2());
+        }
         private void Resumebutton1_Click(object sender, EventArgs e)
         {
-
-            MainForm2 FM = new MainForm2();
-            FM.Show();
+            this.Close();
+            th = new Thread(open);
+            th.SetApartmentState(ApartmentState.STA);
+            th.Start();
+            
         }
     }
 }

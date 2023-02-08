@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,7 +15,7 @@ namespace App
 {
     public partial class MainForm2 : Form
     {
-
+        Thread th;
         SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Учёба\App\App\Database.mdf;Integrated Security=True");
         SqlDataAdapter adpt;
         DataTable dt;
@@ -52,16 +53,34 @@ namespace App
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         { if (ClassContext.levelAccesses == 0)
             {
+                AddForm3 addForm3 = new AddForm3();
                 AddForm3.category = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
                 AddForm3.nowDiscont = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
                 AddForm3.onSclad = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
                 AddForm3.resume = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
                 AddForm3.fileName = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
 
-                AddForm3 addForm3 = new AddForm3();
+                
              
                 addForm3.Show();
             }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Close();
+            th = new Thread(open);
+            th.SetApartmentState(ApartmentState.STA);
+            th.Start();
+        }
+        public void open (object o)
+        {
+            Application.Run(new Form1());
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            showData();
         }
     }
 }

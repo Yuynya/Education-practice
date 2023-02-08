@@ -52,20 +52,23 @@ namespace App
         }
 
         private void AddButton1_Click(object sender, EventArgs e)
-        {
-            SqlCommand command = new SqlCommand(" INSERT INTO[dbo].[Tovar] ([Category], [NowDiscont], [OnSclad], [Resume],[Picture]) VALUES(" + CategoryComboBox1.SelectedIndex + "," + DiscontAmountTextBox1.Text + "," + OnStockTextBox2.Text + ",N'" + DescriptionRichTextBox1.Text + ",'" + "N'" + fileName + "')", sqlcon);
-            if (command.ExecuteNonQuery() == 1)
+        {if (CategoryComboBox1.Text != null & DiscontAmountTextBox1.Text!=null & OnStockTextBox2.Text != null & DescriptionRichTextBox1.Text != null)
             {
-                MessageBox.Show("Успешно добавлено",
-                "Добавлен товар",
-                MessageBoxButtons.OKCancel);
+                SqlCommand command = new SqlCommand(" INSERT INTO[dbo].[Tovar] ([Category], [NowDiscont], [OnSclad], [TResume]) VALUES(" + CategoryComboBox1.SelectedIndex + "," + DiscontAmountTextBox1.Text + "," + OnStockTextBox2.Text + ",N'" + DescriptionRichTextBox1.Text+ "')", sqlcon);
+                if (command.ExecuteNonQuery() == 1)
+                {
+                    MessageBox.Show("Успешно добавлено",
+                    "Добавлен товар",
+                    MessageBoxButtons.OKCancel);
+                }
+                else
+                {
+                    MessageBox.Show("Что-то не так",
+                    "Что-то не так",
+                    MessageBoxButtons.OKCancel);
+                }
             }
-            else
-            {
-                MessageBox.Show("Что-то не так",
-                "Что-то не так",
-                MessageBoxButtons.OKCancel);
-            }
+            
         }
 
         private void ExitButton2_Click(object sender, EventArgs e)
